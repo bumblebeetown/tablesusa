@@ -3,14 +3,426 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tables USA</title>
+    <title>TablesUSA.org - Totally Radical Services Since... Recently</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Orbitron', monospace;
+            background: linear-gradient(45deg, #ff00ff, #00ffff, #ffff00, #ff00ff);
+            background-size: 400% 400%;
+            animation: gradientShift 8s ease infinite;
+            color: #fff;
+            overflow-x: hidden;
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            border: 3px solid #00ffff;
+            box-shadow: 0 0 20px #ff00ff;
+        }
+        
+        .logo {
+            font-size: 3em;
+            font-weight: 900;
+            text-shadow: 3px 3px 0 #ff00ff, 6px 6px 0 #00ffff;
+            animation: neonPulse 2s infinite alternate;
+        }
+        
+        @keyframes neonPulse {
+            from { text-shadow: 3px 3px 0 #ff00ff, 6px 6px 0 #00ffff, 0 0 10px #fff; }
+            to { text-shadow: 3px 3px 0 #ff00ff, 6px 6px 0 #00ffff, 0 0 30px #fff, 0 0 40px #ff00ff; }
+        }
+        
+        .tagline {
+            font-size: 1.2em;
+            margin-top: 10px;
+            color: #ffff00;
+            animation: blink 1.5s infinite;
+        }
+        
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0.3; }
+        }
+        
+        nav {
+            background: rgba(0, 0, 0, 0.9);
+            padding: 15px;
+            margin: 20px 0;
+            border: 2px solid #ffff00;
+            text-align: center;
+        }
+        
+        nav a {
+            color: #00ffff;
+            text-decoration: none;
+            margin: 0 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+            transition: all 0.3s;
+        }
+        
+        nav a:hover {
+            color: #ff00ff;
+            text-shadow: 0 0 10px #ff00ff;
+        }
+        
+        .main-content {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 30px;
+            border: 3px solid #ff00ff;
+            margin: 20px 0;
+            position: relative;
+        }
+        
+        .retro-section {
+            margin: 30px 0;
+            padding: 20px;
+            border: 2px solid #00ffff;
+            background: linear-gradient(135deg, rgba(255, 0, 255, 0.1), rgba(0, 255, 255, 0.1));
+        }
+        
+        h2 {
+            color: #ffff00;
+            font-size: 2em;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+        
+        .trust-meter {
+            background: #000;
+            border: 2px solid #00ffff;
+            height: 30px;
+            margin: 20px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .trust-bar {
+            background: linear-gradient(90deg, #ff0000, #ffff00, #00ff00);
+            height: 100%;
+            width: 100%;
+            animation: trustPulse 3s infinite;
+        }
+        
+        @keyframes trustPulse {
+            0%, 100% { width: 100%; }
+            50% { width: 80%; }
+        }
+        
+        .trust-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #000;
+            font-weight: bold;
+            z-index: 10;
+        }
+        
+        .chatbot {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+        
+        .chatbot-toggle {
+            background: #ff00ff;
+            color: #000;
+            border: none;
+            padding: 15px;
+            border-radius: 50%;
+            font-size: 1.5em;
+            cursor: pointer;
+            animation: bounce 2s infinite;
+            box-shadow: 0 0 20px #ff00ff;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+        
+        .chatbot-window {
+            position: absolute;
+            bottom: 70px;
+            right: 0;
+            width: 300px;
+            height: 400px;
+            background: rgba(0, 0, 0, 0.95);
+            border: 3px solid #00ffff;
+            display: none;
+            flex-direction: column;
+        }
+        
+        .chatbot-header {
+            background: #ff00ff;
+            color: #000;
+            padding: 10px;
+            text-align: center;
+            font-weight: bold;
+        }
+        
+        .chatbot-messages {
+            flex: 1;
+            padding: 10px;
+            overflow-y: auto;
+            font-size: 0.9em;
+        }
+        
+        .chatbot-input {
+            display: flex;
+            padding: 10px;
+        }
+        
+        .chatbot-input input {
+            flex: 1;
+            background: #000;
+            border: 1px solid #00ffff;
+            color: #fff;
+            padding: 5px;
+        }
+        
+        .chatbot-input button {
+            background: #ffff00;
+            color: #000;
+            border: none;
+            padding: 5px 10px;
+            margin-left: 5px;
+            cursor: pointer;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            border: 2px solid #ffff00;
+        }
+        
+        .matrix-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            opacity: 0.1;
+        }
+        
+        @media (max-width: 768px) {
+            .logo { font-size: 2em; }
+            nav a { margin: 0 10px; font-size: 1em; }
+            .container { padding: 10px; }
+        }
+    </style>
 </head>
 <body>
-    <h1>I built a webpage.
+    <canvas class="matrix-bg" id="matrix"></canvas>
     
-    It took 4 nights. All because I thought "TablesUSA.org" was a funny name to own as a webpage.
+    <div class="container">
+        <header>
+            <h1 class="logo">TablesUSA.org</h1>
+            <p class="tagline">Because CoffinsUSA.pizza was too expensive!</p>
+        </header>
+        
+        <nav>
+            <a href="#home">Home</a>
+            <a href="about.html">About Us</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+        
+        <div class="main-content">
+            <div class="retro-section">
+                <h2>🎮 Welcome to the Future (of 1989)! 🎮</h2>
+                <p>Greetings, fellow netizens! You've just entered the most tubular corner of the World Wide Web. TablesUSA.org isn't about tables - we're way too cool for furniture. We're about... well, we haven't figured that out yet, but trust us, it's gonna be totally awesome!</p>
+                
+                <div class="trust-meter">
+                    <div class="trust-bar"></div>
+                    <div class="trust-text">TRUST LEVEL: MAXIMUM</div>
+                </div>
+            </div>
+            
+            <div class="retro-section">
+                <h2>📼 What We Do (Sort Of) 📼</h2>
+                <p>Our services are so cutting-edge, they're still being invented! But here's what we can tell you:</p>
+                <ul style="margin: 15px 0; padding-left: 20px; color: #00ffff;">
+                    <li>We exist on the information superhighway</li>
+                    <li>We have a .org domain (super trustworthy!)</li>
+                    <li>We're not CoffinsUSA.pizza (that was our second choice)</li>
+                    <li>We use Comic Sans ironically (just kidding, we use Orbitron)</li>
+                    <li>We're Y2K compliant*</li>
+                </ul>
+                <p style="font-size: 0.8em; color: #ffff00;">*Compliance not guaranteed</p>
+            </div>
+            
+            <div class="retro-section">
+                <h2>🕹️ Why Choose Us? 🕹️</h2>
+                <p>Because we're the bee's knees, the cat's pajamas, and totally phat! Our commitment to excellence is matched only by our commitment to being rad. When you choose TablesUSA.org, you're not just choosing a website - you're choosing a lifestyle. A lifestyle of uncertainty, questionable decisions, and maximum trust!</p>
+                
+                <p style="color: #ff00ff; font-weight: bold; margin-top: 20px;">
+                    "Don't have a cow, man!" - Some wise person, probably
+                </p>
+            </div>
+            
+            <div class="retro-section">
+                <h2>💾 Coming Soon™ 💾</h2>
+                <p>We're working on some totally bodacious features that will blow your mind harder than a Tamagotchi in a microwave:</p>
+                <ul style="margin: 15px 0; padding-left: 20px; color: #00ffff;">
+                    <li>Services (TBD)</li>
+                    <li>Products (Maybe)</li>
+                    <li>A purpose (Eventually)</li>
+                    <li>Dial-up modem sound effects</li>
+                    <li>More neon colors</li>
+                </ul>
+            </div>
+        </div>
+        
+        <footer class="footer">
+            <p>© 2024 TablesUSA.org - All rights reserved (we think)</p>
+            <p style="font-size: 0.8em; color: #00ffff;">Best viewed in Netscape Navigator 4.0 or higher</p>
+        </footer>
+    </div>
     
-    So I had to learn to build a webpage. <div class="tenor-gif-embed" data-postid="8695525567284332490" data-share-method="host" data-aspect-ratio="1.77778" data-width="100%"><a href="https://tenor.com/view/i-can%27t-know-how-to-hear-anymore-about-tables-i-think-you-should-leave-with-tim-robinson-i%27m-tired-of-hearing-about-the-tables-i-don%27t-wanna-hear-anymore-about-tables-tim-robinson-gif-8695525567284332490">I Can&#39;T Know How To Hear Anymore About Tables I Think You Should Leave With Tim Robinson GIF</a>from <a href="https://tenor.com/search/i+can%27t+know+how+to+hear+anymore+about+tables-gifs">I Can&#39;T Know How To Hear Anymore About Tables GIFs</a></div> <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
-    Contact: ian@tablesusa.org</h1>
+    <!-- Chatbot -->
+    <div class="chatbot">
+        <button class="chatbot-toggle" onclick="toggleChatbot()">🤖</button>
+        <div class="chatbot-window" id="chatbotWindow">
+            <div class="chatbot-header">TablesBot 3000</div>
+            <div class="chatbot-messages" id="chatbotMessages">
+                <p style="color: #00ffff;">Hello! I'm here to not help you! Are you satisfied with my service?</p>
+            </div>
+            <div class="chatbot-input">
+                <input type="text" id="chatbotInput" placeholder="Type anything...">
+                <button onclick="sendMessage()">Send</button>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Matrix rain effect
+        const canvas = document.getElementById('matrix');
+        const ctx = canvas.getContext('2d');
+        
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        
+        const katakana = 'アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズブヅプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴッン';
+        const latin = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        const nums = '0123456789';
+        const alphabet = katakana + latin + nums;
+        
+        const fontSize = 16;
+        const columns = canvas.width / fontSize;
+        
+        const rainDrops = [];
+        
+        for(let x = 0; x < columns; x++) {
+            rainDrops[x] = 1;
+        }
+        
+        const draw = () => {
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            ctx.fillStyle = '#0F0';
+            ctx.font = fontSize + 'px monospace';
+            
+            for(let i = 0; i < rainDrops.length; i++) {
+                const text = alphabet.charAt(Math.floor(Math.random() * alphabet.length));
+                ctx.fillText(text, i * fontSize, rainDrops[i] * fontSize);
+                
+                if(rainDrops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                    rainDrops[i] = 0;
+                }
+                rainDrops[i]++;
+            }
+        };
+        
+        setInterval(draw, 30);
+        
+        // Chatbot functionality
+        let chatbotOpen = false;
+        const responses = [
+            "Are you satisfied with my service?",
+            "I'm not programmed to help, but are you satisfied?",
+            "That's nice. Are you satisfied with my service?",
+            "Cool story. But are you satisfied with my service?",
+            "I don't understand, but are you satisfied with my service?",
+            "Error 404: Help not found. Are you satisfied with my service?",
+            "I'm just here to ask: Are you satisfied with my service?",
+            "Interesting. Anyway, are you satisfied with my service?",
+            "That reminds me of the time I didn't help someone. Are you satisfied with my service?",
+            "I would help you, but I'm busy being unhelpful. Are you satisfied with my service?"
+        ];
+        
+        function toggleChatbot() {
+            const window = document.getElementById('chatbotWindow');
+            chatbotOpen = !chatbotOpen;
+            window.style.display = chatbotOpen ? 'flex' : 'none';
+        }
+        
+        function sendMessage() {
+            const input = document.getElementById('chatbotInput');
+            const messages = document.getElementById('chatbotMessages');
+            
+            if(input.value.trim()) {
+                // Add user message
+                const userMsg = document.createElement('p');
+                userMsg.innerHTML = `<span style="color: #ffff00;">You:</span> ${input.value}`;
+                messages.appendChild(userMsg);
+                
+                // Add bot response
+                setTimeout(() => {
+                    const botMsg = document.createElement('p');
+                    const response = responses[Math.floor(Math.random() * responses.length)];
+                    botMsg.innerHTML = `<span style="color: #ff00ff;">TablesBot:</span> ${response}`;
+                    messages.appendChild(botMsg);
+                    messages.scrollTop = messages.scrollHeight;
+                }, 1000);
+                
+                input.value = '';
+                messages.scrollTop = messages.scrollHeight;
+            }
+        }
+        
+        // Allow Enter key to send messages
+        document.getElementById('chatbotInput').addEventListener('keypress', function(e) {
+            if(e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+        
+        // Resize canvas on window resize
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+    </script>
 </body>
 </html>
